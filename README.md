@@ -1,4 +1,4 @@
-# [▶ 시뮬레이터 실행하기](https://pid-simulator-semiconductor-process-control-qd2yxbf5bfp8upztdp.streamlit.app/)
+# [▶ Run the simulator](https://pid-simulator-semiconductor-process-control-qd2yxbf5bfp8upztdp.streamlit.app/)
 
 # PID Simulator for Semiconductor Process Control
 
