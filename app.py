@@ -11,7 +11,7 @@ plt.rcParams["axes.unicode_minus"] = False
 
 st.set_page_config(page_title="온도 제어 시뮬레이터", layout="wide")
 st.title("온도 제어 시뮬레이터")
-st.caption("FOPDT 공정에서 온오프, P, PID 제어를 비교합니다. 왼쪽 값을 바꾸면 그래프와 결과가 즉시 갱신됩니다.")
+st.caption("FOPDT 공정에서 온오프, P, PID 제어를 비교합니다. 왼쪽 값을 바꾸면 그래프와 결과가 바로 갱신됩니다.")
 
 PROCESS_PRESETS = {
     "반도체 열처리로 (기본)": {"setpoint": 1000.0, "ambient": 25.0, "tau": 300.0, "gain": 16.0, "delay": 30},
@@ -171,11 +171,11 @@ with graph_tab:
         ax1.grid(alpha=0.25)
         if ax1.lines:
             ax1.legend(fontsize=8)
-        fig1.tight_layout()
+        fig1.subplots_adjust(left=0.11, right=0.97, bottom=0.16, top=0.96)
         plot1 = st.empty()
 
     with chart2:
-        st.subheader("2. 온오프 확대 (40~70분)")
+        st.subheader("2. 확대 (40~70분)")
         fig2, ax2 = plt.subplots(figsize=(10, 4))
         zoom = (minutes >= 40) & (minutes <= 70)
         zoom_indices = np.flatnonzero(zoom)
@@ -196,7 +196,7 @@ with graph_tab:
         lines = ax2.get_lines() + (ax2r.get_lines() if show_heater else [])
         if lines:
             ax2.legend(lines, [line.get_label() for line in lines], loc="upper right", fontsize=8)
-        fig2.tight_layout()
+        fig2.subplots_adjust(left=0.11, right=0.89, bottom=0.16, top=0.96)
         plot2 = st.empty()
 
     st.subheader("3. 세 제어기 온도 비교")
@@ -224,7 +224,7 @@ with graph_tab:
     ax3.grid(alpha=0.25)
     if ax3.lines:
         ax3.legend(fontsize=9)
-    fig3.tight_layout()
+    fig3.subplots_adjust(left=0.08, right=0.98, bottom=0.14, top=0.96)
     plot3 = st.empty()
 
     def draw_plots():
